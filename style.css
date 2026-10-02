@@ -1,0 +1,314 @@
+/* ========================================================
+   JAYNESH YADAV - CYBER SECURITY PORTFOLIO STYLESHEET
+   Cyberpunk / Dark Cyber Hacker Aesthetic
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-bg-primary: #05070d;
+  --color-bg-secondary: #0a0e1a;
+  --color-bg-card: rgba(13, 20, 36, 0.75);
+  --color-neon-green: #00ff66;
+  --color-neon-cyan: #00e5ff;
+  --color-neon-red: #ff3366;
+  --color-border-glow: rgba(0, 229, 255, 0.2);
+  --font-mono: 'Fira Code', 'Share Tech Mono', monospace;
+  --font-sans: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-tech {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #05070d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00e5ff;
+  box-shadow: 0 0 10px #00e5ff;
+}
+
+/* Subtle CRT Scanline Overlay */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Cyber Matrix Background Canvas */
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* Cyber Glow Utilities */
+.glow-text-green {
+  text-shadow: 0 0 8px rgba(0, 255, 102, 0.6), 0 0 20px rgba(0, 255, 102, 0.3);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6), 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+.glow-text-red {
+  text-shadow: 0 0 8px rgba(255, 51, 102, 0.6), 0 0 20px rgba(255, 51, 102, 0.3);
+}
+
+.glow-border-cyan {
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15), inset 0 0 15px rgba(0, 229, 255, 0.05);
+}
+
+.glow-border-green {
+  border-color: rgba(0, 255, 102, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.15), inset 0 0 15px rgba(0, 255, 102, 0.05);
+}
+
+/* Interactive Cyber Cards */
+.cyber-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neon-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-card:hover {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow: 0 10px 30px -10px rgba(0, 229, 255, 0.25), 0 0 20px rgba(0, 255, 102, 0.1);
+  transform: translateY(-4px);
+}
+
+.cyber-card:hover::before {
+  opacity: 1;
+}
+
+/* Cyber Button Styles */
+.cyber-btn-cyan {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(0, 229, 255, 0.04));
+  border: 1px solid #00e5ff;
+  color: #00e5ff;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.cyber-btn-cyan:hover {
+  background: #00e5ff;
+  color: #05070d;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.cyber-btn-green {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 255, 102, 0.12), rgba(0, 255, 102, 0.04));
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.cyber-btn-green:hover {
+  background: #00ff66;
+  color: #05070d;
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Cyber Corner Accents */
+.cyber-corners {
+  position: relative;
+}
+
+.cyber-corners::before,
+.cyber-corners::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #00e5ff;
+  pointer-events: none;
+}
+
+.cyber-corners::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cyber-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Pulsing Status Ping */
+@keyframes cyber-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 255, 102, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+  }
+}
+
+.cyber-pulse-green {
+  animation: cyber-pulse 2s infinite;
+}
+
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: #00ff66;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+/* Glitch Effect on Title */
+.glitch-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff3366;
+  clip-path: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00e5ff;
+  clip-path: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(40% 0 61% 0); }
+  20% { clip-path: inset(92% 0 1% 0); }
+  40% { clip-path: inset(10% 0 40% 0); }
+  60% { clip-path: inset(62% 0 20% 0); }
+  80% { clip-path: inset(30% 0 50% 0); }
+  100% { clip-path: inset(80% 0 5% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(25% 0 58% 0); }
+  20% { clip-path: inset(70% 0 10% 0); }
+  40% { clip-path: inset(5% 0 75% 0); }
+  60% { clip-path: inset(45% 0 35% 0); }
+  80% { clip-path: inset(88% 0 2% 0); }
+  100% { clip-path: inset(15% 0 65% 0); }
+}
+
+/* Hexagon / Cyber Grid background pattern for sections */
+.cyber-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Terminal Modal Window */
+.terminal-window {
+  background: #090d16;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.2);
+}
